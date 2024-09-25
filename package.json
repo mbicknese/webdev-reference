@@ -1,0 +1,9 @@
+{
+  "name": "webdev-reference",
+  "version": "0.0.0",
+  "author": "Maarten Bicknese <maarten@bicknese.tech>",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^3"
+  }
+}
