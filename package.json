@@ -5,5 +5,14 @@
   "private": true,
   "devDependencies": {
     "prettier": "^3"
+  },
+  "dependencies": {
+    "graphql": "^16",
+    "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@whatwg-node/fetch": "~0.9.20"
+    }
   }
 }

@@ -1,0 +1,55 @@
+schema {
+	query: Query
+	mutation: Mutation
+}
+type Query {
+	movie(id: ID!): Movie!
+	movies(
+		after: String
+		before: String
+		first: Int
+	): MovieConnection
+}
+type Mutation {
+	createMovie(request: NewMovieRequest!): MovieMutationPayload!
+}
+
+scalar Date
+type PageInfo {
+	hasNextPage: Boolean!
+	pageSize: Int!
+	startCursor: String!
+}
+
+type Movie {
+	id: ID!
+	title: String!
+	released: Date
+}
+type MovieEdge {
+	cursor: ID!
+	node: Movie!
+}
+type MovieConnection {
+	edges: [MovieEdge!]!
+	pageInfo: PageInfo!
+}
+input NewMovieRequest {
+	id: String
+	title: String
+	released: Date
+}
+type MovieMutationPayload {
+	movie: Movie!
+	movieErrors: [CreateMovieError!]
+}
+
+interface MovieError {
+	message: String!
+	path: String!
+}
+type MovieExists implements MovieError {
+	message: String!
+	path: String!
+}
+union CreateMovieError = MovieExists
